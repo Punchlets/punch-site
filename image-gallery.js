@@ -1,5 +1,6 @@
-const images = [
-"https://art.punchlets.com/assets/images/gallery01/ebe4bea4.jpg?v=68796fe7",
+    // Array of image URLs. These placeholder URLs are created with varying dimensions.
+    const images = [
+      "https://art.punchlets.com/assets/images/gallery01/ebe4bea4.jpg?v=68796fe7",
 "https://art.punchlets.com/assets/images/gallery01/8ead5175.jpg?v=68796fe7",
 "https://art.punchlets.com/assets/images/gallery01/6fcb06a9.jpg?v=68796fe7",
 "https://art.punchlets.com/assets/images/gallery01/85bb1603.jpg?v=68796fe7",
@@ -300,21 +301,26 @@ const images = [
 "https://art.punchlets.com/assets/images/gallery27/78ec749e.jpg?v=68796fe7",
 "https://art.punchlets.com/assets/images/gallery27/7970d565.jpg?v=68796fe7",
 "https://art.punchlets.com/assets/images/gallery03/deee43f3.jpg?v=68796fe7"
-]	;
+];
 
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
+    // Fisher-Yates (Knuth) Shuffle to randomize the array
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
 
-shuffleArray(images);
+    // Shuffle images array on page load
+    shuffleArray(images);
 
-const gallery = document.getElementById('gallery');
-images.forEach(src => {
-  const img = document.createElement('img');
-  img.src = src;
-  img.alt = "Gallery Image";
-  gallery.appendChild(img);
-});
+    // Get the gallery container element
+    const gallery = document.getElementById('gallery');
+
+    // Loop through the randomized array and create an image element for each
+    images.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = "Gallery Image";
+      gallery.appendChild(img);
+    });
